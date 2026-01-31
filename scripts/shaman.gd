@@ -7,6 +7,7 @@ class_name Shaman
 
 @onready var selectable_light: OmniLight3D = $SelectableLight
 @onready var main: Main = $/root/Main
+@onready var shaman_head: Node3D = $SM_ShamanHead
 
 var needed_mask : MaskResource
 var assigned_mask: Mask :
@@ -20,8 +21,10 @@ var is_valid : bool :
 	
 func update_particles():
 	correct_mask_particles.emitting = assigned_mask.mask_resource == needed_mask
-	
+	if not assigned_mask.mask_resource: return
+	correct_mask_particles.draw_pass_1.material.set("emission", assigned_mask.mask_resource.color)
 	
 func _process(delta: float) -> void:
 	look_at(Vector3.ZERO)
+	shaman_head.rotate_y(delta * TAU)
 	if main: selectable_light.omni_range = lerp(selectable_light.omni_range, 1.0 if main.selected_mask and assigned_mask and assigned_mask.selectable else 0.0, delta * 5.0)

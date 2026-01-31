@@ -66,7 +66,7 @@ vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("8_5vw27")
 emission_enabled = true
 emission = Color(0.42791748, 1, 0.1953125, 1)
-emission_energy_multiplier = 2.0
+emission_energy_multiplier = 0.3
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 6
@@ -83,20 +83,32 @@ point_count = 3
 [sub_resource type="CurveTexture" id="CurveTexture_dg77c"]
 curve = SubResource("Curve_efxa6")
 
+[sub_resource type="Curve" id="Curve_0odxb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lswn8"]
+curve = SubResource("Curve_0odxb")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ycdy4"]
 emission_shape = 1
-emission_sphere_radius = 1.0
+emission_sphere_radius = 1.5
 gravity = Vector3(0, 5, 0)
 scale_min = 0.01
 scale_max = 0.02
 scale_curve = SubResource("CurveTexture_dg77c")
 color = Color(1, 0.6451749, 0.14453125, 1)
+turbulence_noise_strength = 0.1
+turbulence_noise_speed_random = 1.0
+turbulence_influence_over_life = SubResource("CurveTexture_lswn8")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w48qg"]
 transparency = 1
-shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("9_kek77")
+emission_enabled = true
+emission = Color(0.3453346, 1, 0.18359375, 1)
+emission_energy_multiplier = 16.0
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
@@ -167,8 +179,7 @@ process_material = SubResource("ParticleProcessMaterial_272bh")
 draw_pass_1 = SubResource("QuadMesh_kek77")
 
 [node name="Sparks" type="GPUParticles3D" parent="Campfire" unique_id=1309374242]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06564021, 0)
-amount = 16
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3389276, 0)
 lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_ycdy4")
 draw_pass_1 = SubResource("QuadMesh_vivmo")
@@ -187,15 +198,15 @@ transform = Transform3D(-0.9998241, 3.620821e-09, -0.01875091, 0, 1, 1.9310104e-
 [node name="MasksContainer" type="Node3D" parent="." unique_id=654119103]
 
 [node name="Mask" parent="MasksContainer" unique_id=1193392792 node_paths=PackedStringArray("assigned_shaman") instance=ExtResource("3_1bvp3")]
-transform = Transform3D(-0.9294355, -0.17550395, -0.32430717, 0, 0.8793742, -0.47589645, 0.36875886, -0.44234762, -0.8173976, -3.2281032, 1.2630002, -2.1362488)
+transform = Transform3D(-0.9328237, -0.18033594, -0.31167838, 0, 0.8654572, -0.5007596, 0.3600976, -0.46715572, -0.80739504, -3.1108909, 1.0018741, -2.0586817)
 assigned_shaman = NodePath("../../ShamansContainer/Shaman")
 
 [node name="Mask2" parent="MasksContainer" unique_id=1533408053 node_paths=PackedStringArray("assigned_shaman") instance=ExtResource("3_1bvp3")]
-transform = Transform3D(-0.92991537, 0.17507014, 0.32320145, 0, 0.8792209, -0.47623983, -0.36757806, -0.44290024, -0.8176494, 3.214778, 1.2630002, -2.1328864)
+transform = Transform3D(-0.9332957, 0.17986695, 0.31057248, 0, 0.86528426, -0.50111437, -0.35890317, -0.467728, -0.80761606, 3.097657, 1.0018741, -2.0551813)
 assigned_shaman = NodePath("../../ShamansContainer/Shaman2")
 
 [node name="ModelContainer" parent="MasksContainer/Mask2" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015718311, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0054013846, -0.8932487)
 
 [node name="MaskClock" parent="MasksContainer/Mask2/ModelContainer" index="0" unique_id=1713705050 instance=ExtResource("11_efxa6")]
 
@@ -203,11 +214,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015718311, -0.8932487)
 visible = false
 
 [node name="Mask3" parent="MasksContainer" unique_id=835432512 node_paths=PackedStringArray("assigned_shaman") instance=ExtResource("3_1bvp3")]
-transform = Transform3D(-0.99982613, -0.0032003664, -0.0067236116, 0, 0.9028601, -0.42971575, 0.0074462364, -0.42972174, -0.9027974, -0.074117325, 1.2630007, -3.9520452)
+transform = Transform3D(-0.9998274, -0.0033064804, -0.0064906515, 0, 0.8909732, -0.45384347, 0.00728414, -0.45385036, -0.8909124, -0.07148181, 1.0018746, -3.811516)
 assigned_shaman = NodePath("../../ShamansContainer/Shaman3")
 
 [node name="ModelContainer" parent="MasksContainer/Mask3" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015718944, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0054025226, -0.8932487)
 
 [node name="MaskSwap" parent="MasksContainer/Mask3/ModelContainer" index="0" unique_id=937219786 instance=ExtResource("12_dg77c")]
 

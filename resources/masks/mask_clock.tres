@@ -17,6 +17,7 @@ script = ExtResource("2_2x8tv")
 available_move = 1
 effect = 2
 model_scene = ExtResource("1_myf36")
+color = Color(1, 0, 1, 1)
 audio_is_valid = SubResource("AudioStreamRandomizer_nd8ao")
 audio_is_selected = SubResource("AudioStreamRandomizer_k8fjy")
 metadata/_custom_type_script = "uid://ctm3257qxoewp"

@@ -15,6 +15,7 @@ stream_0/stream = ExtResource("1_8w5i4")
 [resource]
 script = ExtResource("1_q0u6b")
 model_scene = ExtResource("1_evynv")
+color = Color(0.96875, 1, 0, 1)
 audio_is_valid = SubResource("AudioStreamRandomizer_raomo")
 audio_is_selected = SubResource("AudioStreamRandomizer_n4x2x")
 metadata/_custom_type_script = "uid://ctm3257qxoewp"
