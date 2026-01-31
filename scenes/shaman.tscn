@@ -5,6 +5,24 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_waw4e"]
 albedo_color = Color(0.73008794, 0.4482774, 0.21007493, 1)
 
+[sub_resource type="Curve" id="Curve_gmayg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kk6lg"]
+curve = SubResource("Curve_gmayg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bc3i5"]
+gravity = Vector3(0, 9.8, 0)
+scale_curve = SubResource("CurveTexture_kk6lg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r01i2"]
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_r0isr"]
+material = SubResource("StandardMaterial3D_r01i2")
+
 [node name="Shaman" type="Node3D" unique_id=1026160748]
 script = ExtResource("1_gmayg")
 
@@ -32,3 +50,7 @@ material = SubResource("StandardMaterial3D_waw4e")
 
 [node name="MaskPosition" type="Node3D" parent="." unique_id=1400136155]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.263, 0)
+
+[node name="CorrectMaskParticles" type="GPUParticles3D" parent="." unique_id=1378581494]
+process_material = SubResource("ParticleProcessMaterial_bc3i5")
+draw_pass_1 = SubResource("QuadMesh_r0isr")

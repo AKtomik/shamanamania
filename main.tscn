@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dsorqsd0e6gp8" path="res://scenes/shaman.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bf01jl6xk7ctv" path="res://scenes/mask.tscn" id="3_1bvp3"]
 [ext_resource type="Script" uid="uid://cr7j2lefxfntf" path="res://scripts/resources/level_resource.gd" id="4_7mycd"]
+[ext_resource type="Resource" uid="uid://bjcduba3poq31" path="res://resources/levels/level_test.tres" id="5_5vw27"]
 [ext_resource type="Resource" uid="uid://civcewty0hhn6" path="res://resources/levels/level_0.tres" id="5_272bh"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1bvp3"]
@@ -14,7 +15,7 @@ size = Vector2(100, 100)
 script = ExtResource("1_1bvp3")
 mask_scene = ExtResource("3_1bvp3")
 shaman_scene = ExtResource("2_h2yge")
-levels = Array[ExtResource("4_7mycd")]([ExtResource("5_272bh")])
+levels = Array[ExtResource("4_7mycd")]([ExtResource("5_5vw27"), ExtResource("5_272bh")])
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=799955140]
 transform = Transform3D(1, 0, 0, 0, 0.9558729, 0.2937805, 0, -0.2937805, 0.9558729, 0, 4.5303545, 6.6061597)
