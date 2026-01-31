@@ -260,6 +260,7 @@ process_material = SubResource("ParticleProcessMaterial_bc3i5")
 draw_pass_1 = SubResource("QuadMesh_r0isr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1088222317]
+visible = false
 mesh = SubResource("PlaneMesh_kk6lg")
 
 [node name="SelectableLight" type="OmniLight3D" parent="." unique_id=1698291465]

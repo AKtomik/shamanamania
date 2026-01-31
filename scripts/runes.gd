@@ -1,20 +1,20 @@
 extends Node
 class_name Runes
 
-class levelMaskModelHistory:
-	var array : Array[MaskModel]
-var historyDictionnary : Dictionary[String, levelMaskModelHistory]
+class levelMaskResourceHistory:
+	var array : Array[MaskResource]
+var historyDictionnary : Dictionary[String, levelMaskResourceHistory]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	historyDictionnary = {}
 
-func setHistory(levelId : String, history : Array[MaskModel]):
-	var levelHistory = levelMaskModelHistory.new()
+func setHistory(levelId : String, history : Array[MaskResource]):
+	var levelHistory = levelMaskResourceHistory.new()
 	levelHistory.array = history
 	historyDictionnary[levelId] = levelHistory
 	
-func addMaskToHistory(levelId : String, mask : MaskModel):
+func addMaskToHistory(levelId : String, mask : MaskResource):
 	var levelHistory = historyDictionnary[levelId]
 	levelHistory.array.append(mask)
 	historyDictionnary[levelId] = levelHistory

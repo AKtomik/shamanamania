@@ -23,7 +23,10 @@ func update_particles():
 	correct_mask_particles.emitting = assigned_mask.mask_resource == needed_mask
 	if not assigned_mask.mask_resource: return
 	correct_mask_particles.draw_pass_1.material.set("emission", assigned_mask.mask_resource.color)
-	
+
+func _ready():
+	shaman_head.rotate_y(TAU * randf())
+
 func _process(delta: float) -> void:
 	look_at(Vector3.ZERO)
 	shaman_head.rotate_y(delta * TAU)

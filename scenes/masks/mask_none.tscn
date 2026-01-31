@@ -74,9 +74,9 @@ mesh = NodePath("SM_MasqueTriangle/Box012")
 lights = [NodePath("OmniLight3D")]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=409196915]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.057988107, 0.31562388, -0.28431723)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.057988107, 0.31562388, -0.89372945)
 light_color = Color(0.9636841, 1, 0.3359375, 1)
-omni_range = 1.38
+omni_range = 2.316
 
 [node name="SM_MasqueTriangle" type="Node3D" parent="." unique_id=169394298]
 transform = Transform3D(-0.8, -1.2079664e-07, 5.280189e-15, 0, -3.4969112e-08, -0.8, 1.2079664e-07, -0.8, 3.4969112e-08, 0, 0.36943328, -0.09516421)

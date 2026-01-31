@@ -123,6 +123,8 @@ func update_selectable_masks(mask: Mask):
 		else: m.idle()
 
 func validity_check():
+	var nonvalid_shamans = shamans.filter(func(s: Shaman): return not s.is_valid)
+	if nonvalid_shamans.size() <= 0: return await end_level()
 	for shaman in shamans:
 		if shaman.is_valid and not shaman.was_valid:
 			shaman.assigned_mask.play_is_valid_audio()
@@ -170,6 +172,18 @@ func load_level(level_resource: LevelResource):
 		masks[i].assigned_shaman = shamans[i]
 		shamans[i].was_valid = shamans[i].is_valid
 		
+	is_animating = false
+
+func end_level():
+	is_animating = true
+	for shaman in shamans:
+		if shaman.is_valid:
+			shaman.assigned_mask.play_is_valid_audio()
+			shaman.assigned_mask.model_container.scale = Vector3.ONE * 1.5
+			shaman.assigned_mask.click_wobble()
+			await get_tree().create_timer(0.5).timeout
+	# do wowzers animation
+	next_level()
 	is_animating = false
 
 func next_level():
