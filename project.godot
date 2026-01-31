@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="GGJ2026"
+run/main_scene="uid://blfxxb66ypa2d"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [physics]
 
@@ -21,3 +27,4 @@ config/icon="res://icon.svg"
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

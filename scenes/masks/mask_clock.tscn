@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://xmjk6prny0i5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0q5l3"]
+albedo_color = Color(0, 0.671875, 1, 1)
+
+[node name="MaskClock" type="Node3D" unique_id=1713705050]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=982210518]
+transform = Transform3D(-0.9999996, 0, 0.00089016743, 0, 1, 0, -0.00089016743, 0, -0.9999996, -0.0002121307, 0.17042482, 0.32785392)
+size = Vector3(0.7480469, 1, 0.5305176)
+material = SubResource("StandardMaterial3D_0q5l3")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1478572893]
+transform = Transform3D(-0.9999996, 0, 0.00089016743, 0, 1, 0, -0.00089016743, 0, -0.9999996, -6.983344e-06, 0.16529787, 0.170246)
+size = Vector3(0.15039063, 0.5678711, 0.5705261)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=139151027]
+transform = Transform3D(-0.9999996, 0, 0.00089016743, 0, 1, 0, -0.00089016743, 0, -0.9999996, 8.9414345e-05, 0.3709253, 0.061954424)
+size = Vector3(0.57836914, 0.17907715, 0.35394287)

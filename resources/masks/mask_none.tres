@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MaskResource" format=3 uid="uid://ny5tath1j1yy"]
+
+[ext_resource type="PackedScene" uid="uid://b520atcw4xb6k" path="res://scenes/masks/mask_none.tscn" id="1_evynv"]
+[ext_resource type="Script" uid="uid://ctm3257qxoewp" path="res://scripts/resources/mask_resource.gd" id="1_q0u6b"]
+
+[resource]
+script = ExtResource("1_q0u6b")
+model_scene = ExtResource("1_evynv")
+metadata/_custom_type_script = "uid://ctm3257qxoewp"

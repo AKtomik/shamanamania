@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://blfxxb66ypa2d"]
+
+[ext_resource type="Script" uid="uid://cjof8gvfeji7b" path="res://scripts/main.gd" id="1_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://d3v8eynat77lb" path="res://icon.svg" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dsorqsd0e6gp8" path="res://scenes/shaman.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bf01jl6xk7ctv" path="res://scenes/mask.tscn" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://cr7j2lefxfntf" path="res://scripts/resources/level_resource.gd" id="4_7mycd"]
+[ext_resource type="Resource" uid="uid://civcewty0hhn6" path="res://resources/levels/level_0.tres" id="5_272bh"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1bvp3"]
+size = Vector2(100, 100)
+
+[node name="Main" type="Node3D" unique_id=906742551]
+script = ExtResource("1_1bvp3")
+mask_scene = ExtResource("3_1bvp3")
+shaman_scene = ExtResource("2_h2yge")
+levels = Array[ExtResource("4_7mycd")]([ExtResource("5_272bh")])
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=799955140]
+transform = Transform3D(1, 0, 0, 0, 0.9558729, 0.2937805, 0, -0.2937805, 0.9558729, 0, 4.5303545, 6.6061597)
+
+[node name="CameraTarget" type="Node3D" parent="." unique_id=1967595355]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7529273, 0)
+
+[node name="Campfire" type="Node3D" parent="." unique_id=197369463]
+
+[node name="Fire" type="Sprite3D" parent="Campfire" unique_id=404392159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.638647, 0)
+visible = false
+texture = ExtResource("1_ig7tw")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Campfire" unique_id=841154796]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4935614, 0)
+light_color = Color(1, 0.4495405, 0.37647063, 1)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Campfire" unique_id=1465895426]
+light_color = Color(1, 0.4509804, 0.3764706, 1)
+light_energy = 0.1
+
+[node name="ShamansContainer" type="Node3D" parent="." unique_id=1287725843]
+
+[node name="MasksContainer" type="Node3D" parent="." unique_id=654119103]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1911962699]
+mesh = SubResource("PlaneMesh_1bvp3")
