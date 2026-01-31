@@ -28,6 +28,9 @@ func _ready():
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_right"): next_level()
+	if event.is_action_pressed("ui_left"):
+		current_level_index = clamp(current_level_index - 1, 0, levels.size() - 1)
+		load_level(levels[current_level_index])
 
 func _process(delta):
 	var mouse_position = get_viewport().get_mouse_position() - get_viewport().get_visible_rect().size / 2.0
@@ -153,5 +156,5 @@ func load_level(level_resource: LevelResource):
 		mask.assigned_shaman = shaman
 
 func next_level():
-	current_level_index += 1
+	current_level_index = (current_level_index + 1) % levels.size()
 	load_level(levels[current_level_index])

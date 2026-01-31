@@ -7,8 +7,8 @@
 albedo_color = Color(0.73008794, 0.4482774, 0.21007493, 1)
 
 [sub_resource type="Curve" id="Curve_gmayg"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2589928, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_kk6lg"]
 curve = SubResource("Curve_gmayg")
@@ -23,11 +23,11 @@ scale_curve = SubResource("CurveTexture_kk6lg")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r01i2"]
 transparency = 1
-albedo_color = Color(1.3425734, 1.353, 0, 1)
+albedo_color = Color(0, 1.353, 0.03123637, 1)
 albedo_texture = ExtResource("2_kk6lg")
 emission_enabled = true
-emission = Color(1, 0, 0, 1)
-emission_energy_multiplier = 2.4
+emission = Color(4.415934, 0, 0, 1)
+emission_energy_multiplier = 16.0
 billboard_mode = 2
 billboard_keep_scale = true
 
@@ -78,6 +78,6 @@ mesh = SubResource("PlaneMesh_kk6lg")
 
 [node name="SelectableLight" type="OmniLight3D" parent="." unique_id=1698291465]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.104387045, 0)
-light_color = Color(1, 0.6328125, 0, 1)
+light_color = Color(0.7372549, 1, 0.35686275, 1)
 light_energy = 0.366
 omni_range = 3.026
