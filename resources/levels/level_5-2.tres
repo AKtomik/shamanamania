@@ -8,6 +8,6 @@
 
 [resource]
 script = ExtResource("1_uct34")
-shamans_needed_masks = Array[ExtResource("2_bb6sr")]([ExtResource("3_odecm"), ExtResource("4_gsai8"), ExtResource("5_bb6sr"), ExtResource("4_gsai8"), ExtResource("3_odecm")])
-shamans_starting_masks = Array[ExtResource("2_bb6sr")]([ExtResource("5_bb6sr"), ExtResource("4_gsai8"), ExtResource("4_gsai8"), ExtResource("3_odecm"), ExtResource("3_odecm")])
+shamans_needed_masks = Array[ExtResource("2_bb6sr")]([ExtResource("4_gsai8"), ExtResource("3_odecm"), ExtResource("3_odecm"), ExtResource("4_gsai8"), ExtResource("5_bb6sr")])
+shamans_starting_masks = Array[ExtResource("2_bb6sr")]([ExtResource("3_odecm"), ExtResource("3_odecm"), ExtResource("5_bb6sr"), ExtResource("4_gsai8"), ExtResource("4_gsai8")])
 metadata/_custom_type_script = "uid://cr7j2lefxfntf"
