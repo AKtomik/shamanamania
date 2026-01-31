@@ -4,6 +4,7 @@ class_name Mask
 @onready var model_container: Node3D = $ModelContainer
 @onready var area_3d: Area3D = $Area3D
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var mask_model : MaskModel
 
@@ -19,6 +20,8 @@ var selectable := true
 var mask_resource: MaskResource
 
 func _ready():
+	idle()
+	animation_player.seek(animation_player.get_animation("idle").length * randf())
 	area_3d.mouse_entered.connect(func():
 		hovered = true
 	)
@@ -30,6 +33,18 @@ func _input(event: InputEvent) -> void:
 	if not (hovered and selectable): return;
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == 1:
 		clicked.emit()
+		click_wobble()
+
+func idle():
+	animation_player.play("idle")
+	animation_player.seek(animation_player.get_animation("idle").length * randf())
+	
+func wobble():
+	animation_player.play("wobble")
+	animation_player.seek(animation_player.get_animation("wobble").length * randf())
+
+func click_wobble():
+	animation_player.play("click_wobble")
 
 func _process(delta):
 	if not get_viewport().get_camera_3d(): return;

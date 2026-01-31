@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bf01jl6xk7ctv" path="res://scenes/mask.tscn" id="3_1bvp3"]
 [ext_resource type="Script" uid="uid://cr7j2lefxfntf" path="res://scripts/resources/level_resource.gd" id="4_7mycd"]
 [ext_resource type="Resource" uid="uid://eosiecqvngos" path="res://resources/levels/level_4-1.tres" id="5_074og"]
+[ext_resource type="Resource" path="res://resources/levels/level_10-1.tres" id="5_d13ii"]
 [ext_resource type="Resource" uid="uid://cdlagddcwbyup" path="res://resources/levels/level_4-2.tres" id="6_cegan"]
 [ext_resource type="Script" uid="uid://phkh2o26tdnn" path="res://scripts/main_camera.gd" id="7_4c57u"]
 [ext_resource type="Resource" path="res://resources/levels/level_5-1.tres" id="7_82xsv"]
@@ -18,6 +19,11 @@
 [ext_resource type="PackedScene" uid="uid://xmjk6prny0i5" path="res://scenes/masks/mask_clock.tscn" id="11_efxa6"]
 [ext_resource type="Resource" path="res://resources/levels/level_6-4.tres" id="12_0odxb"]
 [ext_resource type="PackedScene" uid="uid://bbmyiyfx1lg4m" path="res://scenes/masks/mask_swap.tscn" id="12_dg77c"]
+[ext_resource type="Resource" path="res://resources/levels/level_6-5.tres" id="13_1u8w0"]
+[ext_resource type="Resource" path="res://resources/levels/level_7-1.tres" id="14_1u8w0"]
+[ext_resource type="Resource" path="res://resources/levels/level_8-1.tres" id="15_0odxb"]
+[ext_resource type="Resource" path="res://resources/levels/level_8-2.tres" id="16_lswn8"]
+[ext_resource type="Resource" path="res://resources/levels/level_9-1.tres" id="17_a6jrf"]
 
 [sub_resource type="Gradient" id="Gradient_5vw27"]
 offsets = PackedFloat32Array(0, 0.20366132, 0.49199083, 0.73913044, 1)
@@ -122,7 +128,7 @@ fog_light_color = Color(0.032226563, 0.06852918, 0.125, 1)
 script = ExtResource("1_1bvp3")
 mask_scene = ExtResource("3_1bvp3")
 shaman_scene = ExtResource("2_h2yge")
-levels = Array[ExtResource("4_7mycd")]([ExtResource("5_074og"), ExtResource("6_cegan"), ExtResource("7_82xsv"), ExtResource("8_getpj"), ExtResource("9_ryguw"), ExtResource("10_d13ii"), ExtResource("11_1u8w0"), ExtResource("12_0odxb")])
+levels = Array[ExtResource("4_7mycd")]([ExtResource("5_074og"), ExtResource("6_cegan"), ExtResource("7_82xsv"), ExtResource("8_getpj"), ExtResource("9_ryguw"), ExtResource("10_d13ii"), ExtResource("11_1u8w0"), ExtResource("12_0odxb"), ExtResource("13_1u8w0"), ExtResource("14_1u8w0"), ExtResource("15_0odxb"), ExtResource("16_lswn8"), ExtResource("17_a6jrf"), ExtResource("5_d13ii")])
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=799955140]
 transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071067, 0, -0.7071067, 0.7071067, 0, 6, 6)
@@ -189,7 +195,7 @@ transform = Transform3D(-0.92991537, 0.17507014, 0.32320145, 0, 0.8792209, -0.47
 assigned_shaman = NodePath("../../ShamansContainer/Shaman2")
 
 [node name="ModelContainer" parent="MasksContainer/Mask2" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.029601268, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015718311, -0.8932487)
 
 [node name="MaskClock" parent="MasksContainer/Mask2/ModelContainer" index="0" unique_id=1713705050 instance=ExtResource("11_efxa6")]
 
@@ -201,7 +207,7 @@ transform = Transform3D(-0.99982613, -0.0032003664, -0.0067236116, 0, 0.9028601,
 assigned_shaman = NodePath("../../ShamansContainer/Shaman3")
 
 [node name="ModelContainer" parent="MasksContainer/Mask3" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.029600965, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015718944, -0.8932487)
 
 [node name="MaskSwap" parent="MasksContainer/Mask3/ModelContainer" index="0" unique_id=937219786 instance=ExtResource("12_dg77c")]
 

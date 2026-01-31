@@ -109,23 +109,29 @@ func apply_effect(mask: Mask):
 
 func update_selectable_masks(mask: Mask):
 	for m in masks: m.selectable = true
-	if not mask: return
-	match mask.mask_resource.available_move:
-		MaskResource.AvailableMove.AdjacentCell:
-			for m in masks: m.selectable = false
-			for n in get_neighbour_masks(mask): n.selectable = true
-		MaskResource.AvailableMove.All:
-			pass
-	# user must have the choice to unselect current mask
-	mask.selectable = true
+	if mask:
+		match mask.mask_resource.available_move:
+			MaskResource.AvailableMove.AdjacentCell:
+				for m in masks: m.selectable = false
+				for n in get_neighbour_masks(mask): n.selectable = true
+			MaskResource.AvailableMove.All:
+				pass
+				
+		# user must have the choice to unselect current mask
+		mask.selectable = true
+	
+	for m in masks:
+		if mask and m.selectable: m.wobble()
+		else: m.idle()
 
 func validity_check():
 	for shaman in shamans:
 		if shaman.is_valid and not shaman.was_valid:
 			shaman.assigned_mask.play_is_valid_audio()
 			shaman.assigned_mask.model_container.scale = Vector3.ONE * 1.5
-			await get_tree().create_timer(0.2).timeout
-		shaman.was_valid = shaman.is_valid
+			shaman.assigned_mask.click_wobble()
+			await get_tree().create_timer(0.5).timeout
+		if shaman: shaman.was_valid = shaman.is_valid
 
 func get_neighbour_masks(mask: Mask) -> Array[Mask]:
 	var masks: Array[Mask]
@@ -141,6 +147,8 @@ func get_ordered_masks() -> Array:
 	return shamans.map(func(s: Shaman): return s.assigned_mask)
 	
 func load_level(level_resource: LevelResource):
+	print("Loading level : ", level_resource.resource_path)
+	
 	for s in shamans_container.get_children(): s.queue_free()
 	shamans.clear()
 	
@@ -154,6 +162,7 @@ func load_level(level_resource: LevelResource):
 		var mask = create_mask(shaman.mask_position.global_position)
 		mask.load_resource(level_resource.shamans_starting_masks[i])
 		mask.assigned_shaman = shaman
+		shaman.was_valid = shaman.is_valid
 
 func next_level():
 	current_level_index = (current_level_index + 1) % levels.size()

@@ -4,8 +4,81 @@
 [ext_resource type="PackedScene" uid="uid://b520atcw4xb6k" path="res://scenes/masks/mask_none.tscn" id="2_rv8xw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_in0c2"]
-radius = 0.3935547
-height = 1.0126953
+radius = 0.5527344
+height = 1.8154297
+
+[sub_resource type="Animation" id="Animation_rv8xw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ModelContainer:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xsism"]
+resource_name = "click_wobble"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ModelContainer:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.39999998, 0.6, 0.79999995, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.2617994), Vector3(0, 0, 0.2617994), Vector3(0, 0, -0.17453292), Vector3(0, 0, 0.17453292), Vector3(0, 0, -0.08726646), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0d8jk"]
+resource_name = "idle"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ModelContainer:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3, 3.2, 3.4, 3.6, 3.8, 4, 4.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.05235988), Vector3(0, 0, 0.05235988), Vector3(0, 0, -0.034906585), Vector3(0, 0, 0.034906585), Vector3(0, 0, -0.017453292), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uscli"]
+resource_name = "wobble"
+length = 1.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ModelContainer:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000005, 0.4000001, 0.5999999, 0.79999995, 1, 1.1999998),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.08726646), Vector3(0, 0, 0.08726646), Vector3(0, 0, -0.05235988), Vector3(0, 0, 0.05235988), Vector3(0, 0, -0.034906585), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xsism"]
+_data = {
+&"RESET": SubResource("Animation_rv8xw"),
+&"click_wobble": SubResource("Animation_xsism"),
+&"idle": SubResource("Animation_0d8jk"),
+&"wobble": SubResource("Animation_uscli")
+}
 
 [node name="Mask" type="Node3D" unique_id=1193392792]
 script = ExtResource("1_in0c2")
@@ -14,7 +87,7 @@ script = ExtResource("1_in0c2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.59819704)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1098468972]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2290039, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.076660156, 0)
 shape = SubResource("CapsuleShape3D_in0c2")
 
 [node name="ModelContainer" type="Node3D" parent="." unique_id=1609231757]
@@ -23,3 +96,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8932487)
 [node name="MaskNone" parent="ModelContainer" unique_id=1713705050 instance=ExtResource("2_rv8xw")]
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=888498302]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=791805540]
+libraries/ = SubResource("AnimationLibrary_xsism")
+autoplay = &"idle"
+speed_scale = 2.0

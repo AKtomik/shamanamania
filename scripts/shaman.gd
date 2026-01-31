@@ -20,7 +20,8 @@ var is_valid : bool :
 	
 func update_particles():
 	correct_mask_particles.emitting = assigned_mask.mask_resource == needed_mask
-
+	
+	
 func _process(delta: float) -> void:
 	look_at(Vector3.ZERO)
 	if main: selectable_light.omni_range = lerp(selectable_light.omni_range, 1.0 if main.selected_mask and assigned_mask and assigned_mask.selectable else 0.0, delta * 5.0)
