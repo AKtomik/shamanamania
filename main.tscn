@@ -7,6 +7,88 @@
 [ext_resource type="Script" uid="uid://cr7j2lefxfntf" path="res://scripts/resources/level_resource.gd" id="4_7mycd"]
 [ext_resource type="Resource" uid="uid://bjcduba3poq31" path="res://resources/levels/level_test.tres" id="5_5vw27"]
 [ext_resource type="Resource" uid="uid://civcewty0hhn6" path="res://resources/levels/level_0.tres" id="5_272bh"]
+[ext_resource type="Script" uid="uid://phkh2o26tdnn" path="res://scripts/main_camera.gd" id="7_4c57u"]
+[ext_resource type="Texture2D" uid="uid://da22mvr2858k0" path="res://sprites/fire-spritesheet.png" id="8_5vw27"]
+[ext_resource type="Texture2D" uid="uid://dcbwll7yw8ds7" path="res://sprites/particle.png" id="9_kek77"]
+
+[sub_resource type="Gradient" id="Gradient_5vw27"]
+offsets = PackedFloat32Array(0, 0.20366132, 0.49199083, 0.73913044, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 0.6759243, 0.015122316, 1, 1, 0.4447183, 0.14366198, 1, 0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kek77"]
+gradient = SubResource("Gradient_5vw27")
+
+[sub_resource type="Curve" id="Curve_4c57u"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.24833703, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_efxa6"]
+curve = SubResource("Curve_4c57u")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_272bh"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -360.0
+angle_max = 360.00003
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_max = 1.0
+angular_velocity_min = -4.000016
+angular_velocity_max = 3.9999838
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 4.9999976
+linear_accel_max = 9.999997
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_efxa6")
+color_ramp = SubResource("GradientTexture1D_kek77")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
+transparency = 2
+alpha_scissor_threshold = 0.7
+alpha_antialiasing_mode = 0
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("8_5vw27")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 5
+particles_anim_loop = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_kek77"]
+material = SubResource("StandardMaterial3D_5vw27")
+
+[sub_resource type="Curve" id="Curve_efxa6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7494457, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_dg77c"]
+curve = SubResource("Curve_efxa6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ycdy4"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 5, 0)
+scale_min = 0.01
+scale_max = 0.02
+scale_curve = SubResource("CurveTexture_dg77c")
+color = Color(1, 0.6451749, 0.14453125, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w48qg"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("9_kek77")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_vivmo"]
+material = SubResource("StandardMaterial3D_w48qg")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1bvp3"]
 size = Vector2(100, 100)
@@ -18,10 +100,11 @@ shaman_scene = ExtResource("2_h2yge")
 levels = Array[ExtResource("4_7mycd")]([ExtResource("5_5vw27"), ExtResource("5_272bh")])
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=799955140]
-transform = Transform3D(1, 0, 0, 0, 0.9558729, 0.2937805, 0, -0.2937805, 0.9558729, 0, 4.5303545, 6.6061597)
+transform = Transform3D(1, 0, 0, 0, 0.83923596, 0.54376745, 0, -0.54376745, 0.83923596, 0, 5.722553, 5.915332)
+script = ExtResource("7_4c57u")
 
 [node name="CameraTarget" type="Node3D" parent="." unique_id=1967595355]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7529273, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88376427, -1.5527236)
 
 [node name="Campfire" type="Node3D" parent="." unique_id=197369463]
 
@@ -38,9 +121,43 @@ light_color = Color(1, 0.4495405, 0.37647063, 1)
 light_color = Color(1, 0.4509804, 0.3764706, 1)
 light_energy = 0.1
 
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Campfire" unique_id=1394658753]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -0.008229256, 0)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_272bh")
+draw_pass_1 = SubResource("QuadMesh_kek77")
+
+[node name="Sparks" type="GPUParticles3D" parent="Campfire" unique_id=1309374242]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06564021, 0)
+amount = 16
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_ycdy4")
+draw_pass_1 = SubResource("QuadMesh_vivmo")
+
 [node name="ShamansContainer" type="Node3D" parent="." unique_id=1287725843]
 
+[node name="Shaman" parent="ShamansContainer" unique_id=1026160748 instance=ExtResource("2_h2yge")]
+transform = Transform3D(-0.5518674, 5.4889828e-08, -0.83393157, 0, 1, 6.5820515e-08, 0.83393157, 3.6324213e-08, -0.5518674, -3.0207114, 2.3841858e-07, -1.9990041)
+
+[node name="Shaman2" parent="ShamansContainer" unique_id=2036027695 instance=ExtResource("2_h2yge")]
+transform = Transform3D(-0.55285066, -5.504397e-08, 0.83328015, 0, 1, 6.6056955e-08, -0.83328015, 3.6519648e-08, -0.55285066, 3.007548, 2.3841858e-07, -1.9953972)
+
+[node name="Shaman3" parent="ShamansContainer" unique_id=1505500024 instance=ExtResource("2_h2yge")]
+transform = Transform3D(-0.9998241, 3.620821e-09, -0.01875091, 0, 1, 1.9310104e-07, 0.01875091, 1.9306711e-07, -0.9998241, -0.06945413, 7.1525574e-07, -3.7033975)
+
 [node name="MasksContainer" type="Node3D" parent="." unique_id=654119103]
+
+[node name="Mask" parent="MasksContainer" unique_id=1193392792 node_paths=PackedStringArray("assigned_shaman") instance=ExtResource("3_1bvp3")]
+transform = Transform3D(-0.93421197, -0.1660974, -0.31550664, 0, 0.88481677, -0.4657905, 0.35656613, -0.43517923, -0.82663506, -3.0207114, 1.2630002, -1.9990041)
+assigned_shaman = NodePath("../../ShamansContainer/Shaman")
+
+[node name="Mask2" parent="MasksContainer" unique_id=1533408053 node_paths=PackedStringArray("assigned_shaman") instance=ExtResource("3_1bvp3")]
+transform = Transform3D(-0.9346912, 0.1656579, 0.31437615, 0, 0.88465244, -0.46615273, -0.3553565, -0.4357285, -0.82690084, 3.007548, 1.2630002, -1.9953972)
+assigned_shaman = NodePath("../../ShamansContainer/Shaman2")
+
+[node name="Mask3" parent="MasksContainer" unique_id=835432512 node_paths=PackedStringArray("assigned_shaman") instance=ExtResource("3_1bvp3")]
+transform = Transform3D(-0.99981576, -0.0030369123, -0.0065503903, 0, 0.9071874, -0.42058757, 0.007219453, -0.42057934, -0.9071579, -0.069454126, 1.2630007, -3.7033973)
+assigned_shaman = NodePath("../../ShamansContainer/Shaman3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1911962699]
 mesh = SubResource("PlaneMesh_1bvp3")

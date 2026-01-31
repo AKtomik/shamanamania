@@ -8,7 +8,7 @@ var hovered := false
 var selected := false
 var selectable := true
 
-var assigned_shaman: Shaman :
+@export var assigned_shaman: Shaman :
 	set(value):
 		assigned_shaman = value
 		assigned_shaman.assigned_mask = self

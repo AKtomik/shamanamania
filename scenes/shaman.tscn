@@ -23,8 +23,10 @@ billboard_keep_scale = true
 [sub_resource type="QuadMesh" id="QuadMesh_r0isr"]
 material = SubResource("StandardMaterial3D_r01i2")
 
-[node name="Shaman" type="Node3D" unique_id=1026160748]
+[node name="Shaman" type="Node3D" unique_id=1026160748 node_paths=PackedStringArray("mask_position", "correct_mask_particles")]
 script = ExtResource("1_gmayg")
+mask_position = NodePath("MaskPosition")
+correct_mask_particles = NodePath("CorrectMaskParticles")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1881782728]
 transform = Transform3D(-0.99999267, 0, -0.00382223, 0, 1, 0, 0.00382223, 0, -0.99999267, 2.4483417e-05, 0.5049766, -0.05159538)

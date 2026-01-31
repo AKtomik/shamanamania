@@ -122,10 +122,10 @@ func get_ordered_masks() -> Array:
 	return shamans.map(func(s: Shaman): return s.assigned_mask)
 	
 func load_level(level_resource: LevelResource):
-	for s in shamans: s.queue_free()
+	for s in shamans_container.get_children(): s.queue_free()
 	shamans.clear()
 	
-	for m in masks: m.queue_free()
+	for m in masks_container.get_children(): m.queue_free()
 	masks.clear()
 	
 	var count :float= level_resource.shamans_needed_masks.size()
