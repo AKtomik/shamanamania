@@ -1,11 +1,13 @@
 [gd_scene format=4 uid="uid://b7cercnrqjym4"]
 
 [ext_resource type="Texture2D" uid="uid://xtxt0iwb4qhn" path="res://models/Totem01/BC_Totem01.png" id="1_fn4rd"]
+[ext_resource type="Script" uid="uid://btknkcbyun4x6" path="res://scripts/totem.gd" id="1_mf2hk"]
 [ext_resource type="Texture2D" uid="uid://chnlipwf6ff2u" path="res://models/Totem01/ORM_Totem01.png" id="2_mf2hk"]
 [ext_resource type="Texture2D" uid="uid://chsy686qkmap1" path="res://models/Totem01/E_Totem01.png" id="3_qkkju"]
 [ext_resource type="Texture2D" uid="uid://dqx0868beqsil" path="res://models/Totem01/N_Totem01.png" id="4_2soay"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ftkiu"]
+resource_local_to_scene = true
 albedo_texture = ExtResource("1_fn4rd")
 metallic = 1.0
 metallic_texture = ExtResource("2_mf2hk")
@@ -54,7 +56,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mb33l")
 
-[node name="SM_Totem02" type="Node3D" unique_id=1059491425]
+[node name="SM_Totem02" type="Node3D" unique_id=1059491425 node_paths=PackedStringArray("mesh")]
+script = ExtResource("1_mf2hk")
+mesh = NodePath("SM_Totem01")
 
 [node name="SM_Totem01" type="MeshInstance3D" parent="." unique_id=1513471481]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)

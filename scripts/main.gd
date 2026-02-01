@@ -5,24 +5,30 @@ class_name Main
 @export var shaman_scene : PackedScene
 @export var shaman_circle_radius := 3.0
 
-@onready var camera_3d: Camera3D = $Camera3D
 @onready var camera_target: Node3D = $CameraTarget
+@onready var camera_3d: MainCamera = $CameraContainer/Camera3D
+@onready var fire_particles: GPUParticles3D = $WorldEnvironment/Campfire/FireParticles
 
 @onready var shamans_container: Node3D = $ShamansContainer
 @onready var masks_container: Node3D = $MasksContainer
+@onready var totems_container: Node3D = $TotemsContainer
 
 @export_category("Levels")
 @export var levels: Array[LevelResource]
 var current_level_index := 0
 
+@export_category("Runes")
+@export var rune : Runes
+
 var shamans : Array[Shaman]
 var masks : Array[Mask]
 
-@export var rune : Runes
-
 var selected_mask: Mask
 var is_animating := false
-var swap_animation_duration := 0.5
+var is_end_level := false
+@export var swap_animation_duration := 0.5
+
+@onready var level_complete_audio: AudioStreamPlayer3D = $Audios/LevelCompleteAudio
 
 func _ready():
 	load_level(levels[0])
@@ -61,11 +67,13 @@ func click_mask(mask: Mask):
 		selected_mask = mask
 		mask.selected = true
 		update_selectable_masks(selected_mask)
+		selected_mask.select_audio.play()
 		mask.play_is_selected_audio()
 		return;
 		
 	if selected_mask == mask:
 		# unselect mask
+		selected_mask.cancel_audio.play()
 		selected_mask.selected = false
 		selected_mask = null
 		update_selectable_masks(null)
@@ -75,6 +83,7 @@ func click_mask(mask: Mask):
 		var target_shaman = selected_mask.assigned_shaman
 		selected_mask.assigned_shaman = mask.assigned_shaman
 		mask.assigned_shaman = target_shaman
+		mask.swap_audio.play()
 		await swap_animate()
 		apply_effect(selected_mask)
 		selected_mask = null
@@ -96,6 +105,7 @@ func apply_effect(mask: Mask):
 			var lmask = neighbours[0].assigned_shaman
 			neighbours[0].assigned_shaman = neighbours[1].assigned_shaman
 			neighbours[1].assigned_shaman = lmask
+			mask.swap_audio.play()
 			await swap_animate()
 		MaskResource.Effect.Clockwise:
 			var omasks := get_ordered_masks()
@@ -103,6 +113,7 @@ func apply_effect(mask: Mask):
 				var left_index = i - 1
 				if i < 0: left_index = masks.size() - 1
 				omasks[i].assigned_shaman =  shamans[left_index]
+			mask.swap_audio.play()
 			await swap_animate()
 
 func update_selectable_masks(mask: Mask):
@@ -125,13 +136,15 @@ func update_selectable_masks(mask: Mask):
 func validity_check():
 	var nonvalid_shamans = shamans.filter(func(s: Shaman): return not s.is_valid)
 	if nonvalid_shamans.size() <= 0: return await end_level()
+	is_animating = true
 	for shaman in shamans:
-		if shaman.is_valid and not shaman.was_valid:
+		if shaman.is_valid:
 			shaman.assigned_mask.play_is_valid_audio()
 			shaman.assigned_mask.model_container.scale = Vector3.ONE * 1.5
 			shaman.assigned_mask.click_wobble()
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(0.3).timeout
 		if shaman: shaman.was_valid = shaman.is_valid
+	is_animating = false
 
 func get_neighbour_masks(mask: Mask) -> Array[Mask]:
 	var masks: Array[Mask]
@@ -171,20 +184,45 @@ func load_level(level_resource: LevelResource):
 		await get_tree().create_timer(anim_duration / count).timeout
 		masks[i].assigned_shaman = shamans[i]
 		shamans[i].was_valid = shamans[i].is_valid
-		
+		masks[i].swap_audio.play()
 	is_animating = false
 
 func end_level():
+	is_end_level = true
 	is_animating = true
+	
+	get_tree().create_tween().tween_property(camera_3d, "zoom", 2.0, 0.5)
+	await get_tree().create_timer(0.5).timeout
+
 	for shaman in shamans:
 		if shaman.is_valid:
 			shaman.assigned_mask.play_is_valid_audio()
 			shaman.assigned_mask.model_container.scale = Vector3.ONE * 1.5
 			shaman.assigned_mask.click_wobble()
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(0.3).timeout
+			
 	# do wowzers animation
+	camera_3d.current_camera_target = camera_3d.totem_camera_target
+	get_tree().create_tween().tween_property(camera_3d, "zoom", 5.0, 0.5)
+	
+	await get_tree().create_timer(0.5).timeout
+	totems_container.get_children()[current_level_index].is_active = true
+	level_complete_audio.play()
+	
+	await get_tree().create_timer(1.5).timeout
+	get_tree().create_tween().tween_property(fire_particles.process_material, "scale_max", 50.0, 0.5)
+	get_tree().create_tween().tween_property(fire_particles.process_material, "emission_sphere_radius", 10.0, 0.5)
+	
+	await get_tree().create_timer(1.5).timeout
+	get_tree().create_tween().tween_property(fire_particles.process_material, "scale_max", 4.0, 0.5)
+	get_tree().create_tween().tween_property(fire_particles.process_material, "emission_sphere_radius", 1.0, 0.5)
+	camera_3d.current_camera_target = camera_3d.camera_target
+	get_tree().create_tween().tween_property(camera_3d, "zoom", 0.0, 0.5)
+
 	next_level()
 	is_animating = false
+	is_end_level = false
+	
 
 func next_level():
 	current_level_index = (current_level_index + 1) % levels.size()

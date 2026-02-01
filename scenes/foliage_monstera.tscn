@@ -89,11 +89,11 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_21xt0")
 
 [node name="SM_Monstera_var2" type="Node3D" unique_id=1113388918]
-transform = Transform3D(2.1817198, 0, 1.6841413, 0, 2.7561264, 0, -1.6841413, 0, 2.1817198, 0, 0, 0)
+transform = Transform3D(1.3465368, 0, -2.5733857, 0, 2.904389, 0, 2.5733857, 0, 1.3465368, 0, 0, 0)
 script = ExtResource("1_dtkig")
 max_scale = 5.0
 random_rotation_y = true
-is_inited = null
+is_inited = true
 
 [node name="LOD0_001" type="MeshInstance3D" parent="." unique_id=1283382470]
 transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2.301176e-06, 9.536743e-07, -2.301176e-06, 30.480001, 0.021783855, 0, 0.012236692)

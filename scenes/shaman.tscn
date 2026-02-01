@@ -271,7 +271,7 @@ light_energy = 0.366
 omni_range = 3.026
 
 [node name="SM_ShamanHead" type="Node3D" parent="." unique_id=772585691]
-transform = Transform3D(-0.6, 0, -9.059749e-08, 0, 0.6, 0, 9.059749e-08, 0, -0.6, 0, 1.3416369, 0)
+transform = Transform3D(-0.4118387, 0, -0.43636775, 0, 0.6, 0, 0.43636775, 0, -0.4118387, 0, 1.3416369, 0)
 
 [node name="SM_ShamanHead" type="MeshInstance3D" parent="SM_ShamanHead" unique_id=200494503]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)

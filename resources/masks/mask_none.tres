@@ -1,25 +1,14 @@
 [gd_resource type="Resource" script_class="MaskResource" format=3 uid="uid://ny5tath1j1yy"]
 
-[ext_resource type="AudioStream" uid="uid://dyanrlvp3crk3" path="res://audio/voices/TA_0.wav" id="1_81oo2"]
 [ext_resource type="PackedScene" uid="uid://b520atcw4xb6k" path="res://scenes/masks/mask_none.tscn" id="1_evynv"]
 [ext_resource type="Script" uid="uid://ctm3257qxoewp" path="res://scripts/resources/mask_resource.gd" id="1_q0u6b"]
-[ext_resource type="AudioStream" uid="uid://dj28men04dy37" path="res://audio/voices/TA_1.wav" id="2_pucxc"]
-[ext_resource type="AudioStream" uid="uid://7mwcurt33wc3" path="res://audio/voices/TA_2.wav" id="3_jerev"]
-[ext_resource type="AudioStream" uid="uid://x4fmai6caemu" path="res://audio/voices/TA_3.wav" id="4_e7stf"]
 [ext_resource type="AudioStream" uid="uid://dxulvp7688ryn" path="res://audio/voices/NEUTRAL_0.wav" id="5_7yjbb"]
 [ext_resource type="AudioStream" uid="uid://clws2lunmuspq" path="res://audio/voices/NEUTRAL_1.wav" id="6_bl2ja"]
 [ext_resource type="AudioStream" uid="uid://b6vneit27k178" path="res://audio/voices/NEUTRAL_2.wav" id="7_i4rw5"]
 [ext_resource type="AudioStream" uid="uid://b7r0pmm3biv0o" path="res://audio/voices/NEUTRAL_3.wav" id="8_tv3ew"]
 [ext_resource type="AudioStream" uid="uid://dtaubyw458a13" path="res://audio/voices/NEUTRAL_4.wav" id="9_fs2rj"]
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_n4x2x"]
-streams_count = 4
-stream_0/stream = ExtResource("1_81oo2")
-stream_1/stream = ExtResource("2_pucxc")
-stream_2/stream = ExtResource("3_jerev")
-stream_3/stream = ExtResource("4_e7stf")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_raomo"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_c8dt0"]
 streams_count = 5
 stream_0/stream = ExtResource("5_7yjbb")
 stream_1/stream = ExtResource("6_bl2ja")
@@ -31,6 +20,5 @@ stream_4/stream = ExtResource("9_fs2rj")
 script = ExtResource("1_q0u6b")
 model_scene = ExtResource("1_evynv")
 color = Color(0.96875, 1, 0, 1)
-audio_is_valid = SubResource("AudioStreamRandomizer_raomo")
-audio_is_selected = SubResource("AudioStreamRandomizer_n4x2x")
+audio = SubResource("AudioStreamRandomizer_c8dt0")
 metadata/_custom_type_script = "uid://ctm3257qxoewp"

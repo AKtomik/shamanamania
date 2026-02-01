@@ -6,8 +6,7 @@ class_name MaskResource
 @export var model_scene: PackedScene
 @export var color: Color
 
-@export var audio_is_valid : AudioStream
-@export var audio_is_selected : AudioStream
+@export var audio : AudioStream
 
 
 enum AvailableMove {

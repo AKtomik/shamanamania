@@ -1,10 +1,16 @@
 @tool extends Node3D
 class_name Mask
 
+@onready var main: Main = $/root/Main
 @onready var model_container: Node3D = $ModelContainer
 @onready var area_3d: Area3D = $Area3D
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var cancel_audio: AudioStreamPlayer3D = $CancelAudio
+@onready var hover_audio: AudioStreamPlayer3D = $HoverAudio
+@onready var select_audio: AudioStreamPlayer3D = $SelectAudio
+@onready var swap_audio: AudioStreamPlayer3D = $SwapAudio
+@onready var shake_audio: AudioStreamPlayer3D = $ShakeAudio
 
 var mask_model : MaskModel
 
@@ -38,6 +44,7 @@ func _input(event: InputEvent) -> void:
 func idle():
 	animation_player.play("idle")
 	animation_player.seek(animation_player.get_animation("idle").length * randf())
+	animation_player.speed_scale = randf_range(0.8, 1.2) + 1.0
 	
 func wobble():
 	animation_player.play("wobble")
@@ -63,7 +70,7 @@ func _process(delta):
 		mask_model.is_emissive_active = assigned_shaman.is_valid
 		mask_model.is_light_active = selected
 	
-	look_at(get_viewport().get_camera_3d().position)
+	look_at(get_viewport().get_camera_3d().global_position)
 
 func load_resource(res: MaskResource):
 	mask_resource = res
@@ -72,11 +79,17 @@ func load_resource(res: MaskResource):
 	model_container.add_child(mask_model)
 
 func play_is_valid_audio():
-	audio_stream_player_3d.stream = mask_resource.audio_is_valid
+	audio_stream_player_3d.stream = mask_resource.audio
+	audio_stream_player_3d.pitch_scale = 0.8
 	audio_stream_player_3d.play()
 
 func play_is_selected_audio():
-	audio_stream_player_3d.stream = mask_resource.audio_is_selected
+	audio_stream_player_3d.stream = mask_resource.audio
+	audio_stream_player_3d.pitch_scale = 1.0
 	audio_stream_player_3d.play()
+
+func play_shake_audio():
+	if main.is_animating or main.is_end_level: return;
+	shake_audio.play()
 
 signal clicked()

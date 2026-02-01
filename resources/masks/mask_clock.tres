@@ -1,27 +1,14 @@
 [gd_resource type="Resource" script_class="MaskResource" format=3 uid="uid://kt34w34jw13b"]
 
-[ext_resource type="AudioStream" uid="uid://c5wawllvl2wt5" path="res://audio/voices/UH_0.wav" id="1_0ug8r"]
 [ext_resource type="PackedScene" uid="uid://xmjk6prny0i5" path="res://scenes/masks/mask_clock.tscn" id="1_myf36"]
 [ext_resource type="Script" uid="uid://ctm3257qxoewp" path="res://scripts/resources/mask_resource.gd" id="2_2x8tv"]
-[ext_resource type="AudioStream" uid="uid://8xwnrdnexdf8" path="res://audio/voices/UH_1.wav" id="2_e2w2t"]
-[ext_resource type="AudioStream" uid="uid://dvaft7d1ovf2a" path="res://audio/voices/UH_2.wav" id="3_32brb"]
-[ext_resource type="AudioStream" uid="uid://triyqb05tgyr" path="res://audio/voices/UH_3.wav" id="4_1wsmd"]
-[ext_resource type="AudioStream" uid="uid://c7mb72uppplsg" path="res://audio/voices/UH_4.wav" id="5_r7w5j"]
 [ext_resource type="AudioStream" uid="uid://cxnp7ggrh2nkf" path="res://audio/voices/ROTATE_1 .wav" id="6_i3ndl"]
 [ext_resource type="AudioStream" uid="uid://cbgruw4vx0fxy" path="res://audio/voices/ROTATE_2.wav" id="7_v232k"]
 [ext_resource type="AudioStream" uid="uid://nqhbh1raujuj" path="res://audio/voices/ROTATE_3.wav" id="8_8ic1p"]
 [ext_resource type="AudioStream" uid="uid://c471f83akpx22" path="res://audio/voices/ROTATE_4.wav" id="9_glyxl"]
 [ext_resource type="AudioStream" uid="uid://bfow0vwkaovkj" path="res://audio/voices/ROTATE_5.wav" id="10_gevkj"]
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k8fjy"]
-streams_count = 5
-stream_0/stream = ExtResource("1_0ug8r")
-stream_1/stream = ExtResource("2_e2w2t")
-stream_2/stream = ExtResource("3_32brb")
-stream_3/stream = ExtResource("4_1wsmd")
-stream_4/stream = ExtResource("5_r7w5j")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nd8ao"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i1v5i"]
 streams_count = 5
 stream_0/stream = ExtResource("6_i3ndl")
 stream_1/stream = ExtResource("7_v232k")
@@ -35,6 +22,5 @@ available_move = 1
 effect = 2
 model_scene = ExtResource("1_myf36")
 color = Color(1, 0, 1, 1)
-audio_is_valid = SubResource("AudioStreamRandomizer_nd8ao")
-audio_is_selected = SubResource("AudioStreamRandomizer_k8fjy")
+audio = SubResource("AudioStreamRandomizer_i1v5i")
 metadata/_custom_type_script = "uid://ctm3257qxoewp"
