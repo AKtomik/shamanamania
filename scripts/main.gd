@@ -16,6 +16,7 @@ class_name Main
 @export_category("Levels")
 @export var levels: Array[LevelResource]
 var current_level_index := 0
+var current_level_id : String
 
 @export_category("Runes")
 @export var rune : Runes
@@ -79,6 +80,7 @@ func click_mask(mask: Mask):
 		update_selectable_masks(null)
 	else:
 		# swap with selected mask
+		rune.add_mask_to_history(current_level_id, selected_mask.mask_resource)
 		selected_mask.selected = false
 		var target_shaman = selected_mask.assigned_shaman
 		selected_mask.assigned_shaman = mask.assigned_shaman
@@ -163,6 +165,9 @@ func load_level(level_resource: LevelResource):
 	is_animating = true
 	print("Loading level : ", level_resource.resource_path)
 	
+	current_level_id = level_resource.resource_path# you can replace to anything that identify a level
+	rune.set_history(current_level_id, [])
+	
 	for s in shamans_container.get_children(): s.queue_free()
 	shamans.clear()
 	
@@ -190,6 +195,8 @@ func load_level(level_resource: LevelResource):
 func end_level():
 	is_end_level = true
 	is_animating = true
+	
+	print("level runes: "+ rune.get_history_parsed(current_level_id))
 	
 	get_tree().create_tween().tween_property(camera_3d, "zoom", 2.0, 0.5)
 	await get_tree().create_timer(0.5).timeout

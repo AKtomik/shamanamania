@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://b520atcw4xb6k"]
 
-[ext_resource type="Script" uid="uid://cyg5bfh2jwini" path="res://scripts/mask_model.gd" id="1_6fh7b"]
+[ext_resource type="Script" path="res://scripts/mask_model.gd" id="1_6fh7b"]
 [ext_resource type="Texture2D" uid="uid://d0n2uhvfiu5at" path="res://models/Mask3/BC_MasqueTriangle.png" id="8_vnw0b"]
 [ext_resource type="Texture2D" uid="uid://cfbrfac6f5bdg" path="res://models/Mask3/AO_MasqueTriangle.png" id="9_ec8wr"]
 [ext_resource type="Texture2D" uid="uid://bxrowc6mc1g6h" path="res://models/Mask3/E_MasqueTriangle.png" id="10_5klix"]
