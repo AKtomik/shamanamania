@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cg767cgo8cwdf"]
+
+[ext_resource type="PackedScene" uid="uid://b7cercnrqjym4" path="res://scenes/totems/totem_1.tscn" id="1_o388s"]
+[ext_resource type="PackedScene" uid="uid://mm7au23wm3ei" path="res://scenes/totems/totem_2.tscn" id="2_t2d6t"]
+
+[node name="CampfireWood" type="Node3D" unique_id=202925541]
+transform = Transform3D(0.39, 0, 0, 0, 0.39, 0, 0, 0, 0.39, 0, 0, 0)
+
+[node name="SM_Totem02" parent="." unique_id=1059491425 instance=ExtResource("1_o388s")]
+transform = Transform3D(-0.07835949, -0.38731506, -0.37091544, -0.035844345, 0.9219291, -0.15535147, 0.46168548, 0.005839779, -0.07501475, 1.5487082, 0, 0)
+
+[node name="SM_Totem03" parent="." unique_id=1935059622 instance=ExtResource("2_t2d6t")]
+transform = Transform3D(0.4339211, 0.20033014, -0.570236, -0.21525511, 1.0404441, 7.450581e-09, 0.54481053, 0.25152493, 0.45417148, -1.1874453, 1.2226594e-06, -1.5776017)
+
+[node name="SM_Totem04" parent="." unique_id=671454930 instance=ExtResource("1_o388s")]
+transform = Transform3D(0.4618215, 0.006515705, -0.074367255, -0.035844345, 0.9219291, -0.15535147, 0.077553585, 0.3873043, 0.37104577, 0.12714007, 0, -1.6909138)
+
+[node name="SM_Totem05" parent="." unique_id=1698707963 instance=ExtResource("2_t2d6t")]
+transform = Transform3D(0.54405236, 0.25117484, 0.45516607, -0.21525511, 1.0404441, 7.468814e-09, -0.43487135, -0.20076886, 0.56944263, -1.4456835, 1.2226594e-06, 1.0479891)
+
+[node name="SM_Totem06" parent="." unique_id=1599533641 instance=ExtResource("1_o388s")]
+transform = Transform3D(0.20865448, 0.37242198, 0.3333186, -0.035844333, 0.9219291, -0.15535147, -0.4192338, 0.10653141, 0.17917655, -1.6215563, 0, -0.6030666)
+
+[node name="SM_Totem07" parent="." unique_id=863543836 instance=ExtResource("2_t2d6t")]
+transform = Transform3D(-0.25762862, -0.11894048, 0.67729527, -0.21525513, 1.0404441, 9.2103445e-09, -0.64709634, -0.2987476, -0.26965177, 0.54075515, 1.2226594e-06, 1.6990571)
+
+[node name="SM_Totem08" parent="." unique_id=1586948293 instance=ExtResource("1_o388s")]
+transform = Transform3D(-0.4195973, 0.10588136, 0.17859453, -0.035844356, 0.9219293, -0.15535149, -0.20792243, -0.3726073, -0.33363074, -0.75034577, 0, 1.4269674)
+
+[node name="SM_Totem09" parent="." unique_id=1070936689 instance=ExtResource("2_t2d6t")]
+transform = Transform3D(-0.64664555, -0.2985395, -0.27083328, -0.21525511, 1.0404441, 5.3493507e-09, 0.2587576, 0.11946176, -0.6768236, 1.548, 1.2226594e-06, -0.7393588)
