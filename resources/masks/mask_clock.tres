@@ -23,4 +23,5 @@ effect = 2
 model_scene = ExtResource("1_myf36")
 color = Color(1, 0, 1, 1)
 audio = SubResource("AudioStreamRandomizer_i1v5i")
+symbol = "○"
 metadata/_custom_type_script = "uid://ctm3257qxoewp"

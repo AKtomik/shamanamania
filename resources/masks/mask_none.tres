@@ -21,4 +21,5 @@ script = ExtResource("1_q0u6b")
 model_scene = ExtResource("1_evynv")
 color = Color(0.96875, 1, 0, 1)
 audio = SubResource("AudioStreamRandomizer_c8dt0")
+symbol = "▽"
 metadata/_custom_type_script = "uid://ctm3257qxoewp"

@@ -7,7 +7,7 @@ class_name MaskResource
 @export var color: Color
 
 @export var audio : AudioStream
-
+@export var symbol := "▽○⎔"
 
 enum AvailableMove {
 	AdjacentCell,

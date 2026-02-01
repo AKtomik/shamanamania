@@ -5,8 +5,6 @@ class levelMaskResourceHistory:
 	var array : Array[MaskResource]
 var _level_history_dictionnary : Dictionary[String, levelMaskResourceHistory]
 
-@export var _mask_default_rune : String = '?'
-@export var _mask_rune_dictionnary : Dictionary[MaskResource, String] = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,9 +12,7 @@ func _ready() -> void:
 
 # rune generation
 func get_mask_rune(mask : MaskResource) -> String:
-	if (!_mask_rune_dictionnary.has(mask)):
-		return _mask_default_rune
-	return _mask_rune_dictionnary[mask]
+	return mask.symbol
 
 func get_masks_rune(masks : Array[MaskResource]) -> String:
 	var runes : String = ""

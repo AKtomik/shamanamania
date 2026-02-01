@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://d1dnl7m7m6152" path="res://models/Foliage/T_Foliage.png" id="30_seu75"]
 [ext_resource type="PackedScene" uid="uid://mm7au23wm3ei" path="res://scenes/totems/totem_2.tscn" id="31_4k2k6"]
 [ext_resource type="PackedScene" uid="uid://cw5wjprlsrovg" path="res://scenes/totems/totem_3.tscn" id="32_0rl1p"]
+[ext_resource type="FontFile" uid="uid://dwbstqo1ojmx5" path="res://NotoSansSymbols2-Regular.ttf" id="32_htxhm"]
 
 [sub_resource type="Environment" id="Environment_dg77c"]
 background_mode = 2
@@ -240,6 +241,12 @@ uv1_scale = Vector3(10, 10, 10)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1bvp3"]
 size = Vector2(100, 100)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jq2sk"]
+font = ExtResource("32_htxhm")
+font_size = 56
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node3D" unique_id=906742551 node_paths=PackedStringArray("rune")]
 script = ExtResource("1_1bvp3")
@@ -751,7 +758,7 @@ transform = Transform3D(-0.946059, 0.14981519, 0.28686738, 0, 0.8862816, -0.4628
 assigned_shaman = NodePath("../../ShamansContainer/Shaman2")
 
 [node name="ModelContainer" parent="MasksContainer/Mask2" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0046265963, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.004546273, -0.8932487)
 
 [node name="MaskClock" parent="MasksContainer/Mask2/ModelContainer" index="0" unique_id=1713705050 instance=ExtResource("11_efxa6")]
 
@@ -766,7 +773,7 @@ transform = Transform3D(-0.9998273, -0.0027739264, -0.0060004187, 0, 0.9075845, 
 assigned_shaman = NodePath("../../ShamansContainer/Shaman3")
 
 [node name="ModelContainer" parent="MasksContainer/Mask3" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0046417937, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0045468053, -0.8932487)
 
 [node name="MaskSwap" parent="MasksContainer/Mask3/ModelContainer" index="0" unique_id=937219786 instance=ExtResource("12_dg77c")]
 
@@ -804,6 +811,34 @@ transform = Transform3D(0.56911755, -0.18433565, -0.09028096, 0.18642296, 0.5755
 
 [node name="SM_Totem09" parent="TotemsContainer" unique_id=217703541 instance=ExtResource("32_0rl1p")]
 transform = Transform3D(0.5982251, 0.0010545419, -0.09028096, -0.001066483, 0.60499907, 0, 0.09028081, 0.00015914561, 0.598226, 5.0660367, -1.0057261, -9.422035)
+
+[node name="RuneLayer" type="CanvasLayer" parent="." unique_id=58893181]
+
+[node name="Control" type="Control" parent="RuneLayer" unique_id=1094549831]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RuneLabel" type="Label" parent="RuneLayer/Control" unique_id=752629004]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -264.0
+offset_right = 500.0
+offset_bottom = 264.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_jq2sk")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [editable path="MasksContainer/Mask2"]
 [editable path="MasksContainer/Mask3"]

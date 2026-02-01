@@ -12,6 +12,7 @@ class_name Main
 @onready var shamans_container: Node3D = $ShamansContainer
 @onready var masks_container: Node3D = $MasksContainer
 @onready var totems_container: Node3D = $TotemsContainer
+@onready var rune_label: Label = $RuneLayer/Control/RuneLabel
 
 @export_category("Levels")
 @export var levels: Array[LevelResource]
@@ -191,7 +192,14 @@ func load_level(level_resource: LevelResource):
 		shamans[i].was_valid = shamans[i].is_valid
 		masks[i].swap_audio.play()
 	is_animating = false
-
+	
+func animate_runes(duration):
+	rune_label.text = ""
+	var runes = rune.get_history_parsed(str(current_level_id))
+	for char in runes:
+		rune_label.text += char
+		await get_tree().create_timer(duration / runes.length()).timeout
+		
 func end_level():
 	is_end_level = true
 	is_animating = true
@@ -201,13 +209,17 @@ func end_level():
 	get_tree().create_tween().tween_property(camera_3d, "zoom", 2.0, 0.5)
 	await get_tree().create_timer(0.5).timeout
 
+	var shaman_anim_duration = 0.3
+	animate_runes(shamans.size() * shaman_anim_duration)
 	for shaman in shamans:
 		if shaman.is_valid:
 			shaman.assigned_mask.play_is_valid_audio()
 			shaman.assigned_mask.model_container.scale = Vector3.ONE * 1.5
 			shaman.assigned_mask.click_wobble()
-			await get_tree().create_timer(0.3).timeout
+			await get_tree().create_timer(shaman_anim_duration).timeout
 			
+	rune_label.text = ""
+	
 	# do wowzers animation
 	camera_3d.current_camera_target = camera_3d.totem_camera_target
 	get_tree().create_tween().tween_property(camera_3d, "zoom", 5.0, 0.5)
@@ -220,12 +232,15 @@ func end_level():
 	get_tree().create_tween().tween_property(fire_particles.process_material, "scale_max", 50.0, 0.5)
 	get_tree().create_tween().tween_property(fire_particles.process_material, "emission_sphere_radius", 10.0, 0.5)
 	
+	
 	await get_tree().create_timer(1.5).timeout
 	get_tree().create_tween().tween_property(fire_particles.process_material, "scale_max", 4.0, 0.5)
 	get_tree().create_tween().tween_property(fire_particles.process_material, "emission_sphere_radius", 1.0, 0.5)
 	camera_3d.current_camera_target = camera_3d.camera_target
 	get_tree().create_tween().tween_property(camera_3d, "zoom", 0.0, 0.5)
 
+	rune_label.text = ""
+	
 	next_level()
 	is_animating = false
 	is_end_level = false
