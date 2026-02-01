@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://cq4s5k5fvg1mn" path="res://resources/levels/level_9-2.tres" id="14_htxhm"]
 [ext_resource type="AudioStream" uid="uid://cr37g27g88t28" path="res://audio/sfx/level_complete.ogg" id="16_kq58d"]
 [ext_resource type="AudioStream" uid="uid://b6vms15h6lod6" path="res://audio/ggj-2026.wav" id="17_htxhm"]
+[ext_resource type="AudioStream" uid="uid://dtkxrm5fvt6o5" path="res://audio/sfx/fire_burst_long.ogg" id="17_jq2sk"]
 [ext_resource type="AudioStream" uid="uid://c0x8luhy4grtw" path="res://audio/sfx/fire_loop_crackle.wav" id="17_seu75"]
 [ext_resource type="PackedScene" uid="uid://cq1csbvp2p21r" path="res://scenes/foliages.tscn" id="20_seu75"]
 [ext_resource type="Script" uid="uid://bfsvapxkw13np" path="res://scripts/runes.gd" id="25_0odxb"]
@@ -179,6 +180,9 @@ stream = ExtResource("17_seu75")
 volume_db = -6.0
 autoplay = true
 
+[node name="FireBurstAudio" type="AudioStreamPlayer3D" parent="Audios" unique_id=678747294]
+stream = ExtResource("17_jq2sk")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audios" unique_id=1404965537]
 stream = ExtResource("17_htxhm")
 autoplay = true
@@ -260,15 +264,15 @@ transform = Transform3D(-0.9998241, 0, -0.01875091, 0, 1, 0, 0.01875091, 0, -0.9
 [node name="MasksContainer" type="Node3D" parent="." unique_id=654119103]
 
 [node name="Mask" parent="MasksContainer" unique_id=1193392792 node_paths=PackedStringArray("assigned_shaman") instance=ExtResource("3_1bvp3")]
-transform = Transform3D(-0.9456621, -0.15023813, -0.28790885, 0, 0.8864092, -0.46256995, 0.324755, -0.4374821, -0.83836895, -3.1108909, 1.0018739, -2.0586817)
+transform = Transform3D(-0.94565743, -0.15023452, -0.28790578, 0, 0.886388, -0.462565, 0.3247534, -0.4374716, -0.83835995, -3.1108909, 1.0018739, -2.0586817)
 assigned_shaman = NodePath("../../ShamansContainer/Shaman")
 
 [node name="Mask2" parent="MasksContainer" unique_id=1533408053 node_paths=PackedStringArray("assigned_shaman") instance=ExtResource("3_1bvp3")]
-transform = Transform3D(-0.946059, 0.14981519, 0.28686738, 0, 0.8862816, -0.4628656, -0.3236343, -0.43794495, -0.83858067, 3.097657, 1.0018739, -2.0551813)
+transform = Transform3D(-0.94604933, 0.1498133, 0.28686315, 0, 0.8862704, -0.46285877, -0.32363096, -0.4379394, -0.8385683, 3.097657, 1.0018739, -2.0551813)
 assigned_shaman = NodePath("../../ShamansContainer/Shaman2")
 
 [node name="ModelContainer" parent="MasksContainer/Mask2" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02755849, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01545119, -0.8932487)
 
 [node name="MaskClock" parent="MasksContainer/Mask2/ModelContainer" index="0" unique_id=1713705050 instance=ExtResource("11_efxa6")]
 
@@ -276,14 +280,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02755849, -0.8932487)
 visible = false
 
 [node name="AnimationPlayer" parent="MasksContainer/Mask2" index="8" unique_id=791805540]
-speed_scale = 1.8695514
+speed_scale = 1.9011849
 
 [node name="Mask3" parent="MasksContainer" unique_id=835432512 node_paths=PackedStringArray("assigned_shaman") instance=ExtResource("3_1bvp3")]
-transform = Transform3D(-0.9998273, -0.0027739264, -0.0060004187, 0, 0.9075845, -0.41956183, 0.006610453, -0.4195548, -0.90756, -0.07148182, 1.0018739, -3.811516)
+transform = Transform3D(-0.9998106, -0.0027738127, -0.0060002324, 0, 0.90754735, -0.4195488, 0.0066103423, -0.41953763, -0.90753186, -0.07148182, 1.0018739, -3.811516)
 assigned_shaman = NodePath("../../ShamansContainer/Shaman3")
 
 [node name="ModelContainer" parent="MasksContainer/Mask3" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.027558107, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01545119, -0.8932487)
 
 [node name="MaskSwap" parent="MasksContainer/Mask3/ModelContainer" index="0" unique_id=937219786 instance=ExtResource("12_dg77c")]
 
@@ -291,7 +295,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.027558107, -0.8932487)
 visible = false
 
 [node name="AnimationPlayer" parent="MasksContainer/Mask3" index="8" unique_id=791805540]
-speed_scale = 1.9038717
+speed_scale = 2.0098488
 
 [node name="TotemsContainer" type="Node3D" parent="." unique_id=1981188701]
 

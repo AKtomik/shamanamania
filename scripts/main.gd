@@ -6,6 +6,7 @@ class_name Main
 @export var shaman_circle_radius := 3.0
 
 @onready var camera_target: Node3D = $CameraTarget
+@onready var camera_container: Node3D = $CameraContainer
 @onready var camera_3d: MainCamera = $CameraContainer/Camera3D
 @onready var fire_particles: GPUParticles3D = $WorldEnvironment/Campfire/FireParticles
 
@@ -31,8 +32,16 @@ var is_end_level := false
 @export var swap_animation_duration := 0.5
 
 @onready var level_complete_audio: AudioStreamPlayer3D = $Audios/LevelCompleteAudio
+@onready var fire_burst_audio: AudioStreamPlayer3D = $Audios/FireBurstAudio
 
 func _ready():
+	camera_container.global_position.x = 20.0
+	camera_container.global_position.y = 80.0
+	camera_container.global_position.z = -10.0
+	get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC).tween_property(camera_container, "global_position:x", 0.0, 5.0)
+	get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC).tween_property(camera_container, "global_position:y", 0.0, 5.0)
+	get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC).tween_property(camera_container, "global_position:z", 7.0, 5.0)
+	await get_tree().create_timer(5.0 + 1.0).timeout
 	load_level(levels[0])
 
 func _input(event: InputEvent) -> void:
@@ -164,6 +173,23 @@ func get_ordered_masks() -> Array:
 	
 func load_level(level_resource: LevelResource):
 	is_animating = true
+	
+	get_tree().create_tween().tween_property(fire_particles.process_material, "scale_max", 40.0, 0.5)
+	get_tree().create_tween().tween_property(fire_particles.process_material, "emission_sphere_radius", 5.0, 0.5)
+	fire_burst_audio.play()
+	
+	await get_tree().create_timer(1).timeout
+	for shaman in shamans:
+		get_tree().create_tween().tween_property(shaman, "position:x", 0.0, 0.5)
+		get_tree().create_tween().tween_property(shaman, "position:z", 0.0, 0.5)
+		get_tree().create_tween().tween_property(shaman, "position:y", -10.0, 0.5)
+		await get_tree().create_timer(0.1).timeout
+		
+	await get_tree().create_timer(0.5).timeout
+	
+	get_tree().create_tween().tween_property(fire_particles.process_material, "scale_max", 4.0, 0.5)
+	get_tree().create_tween().tween_property(fire_particles.process_material, "emission_sphere_radius", 1.0, 0.5)
+	
 	print("Loading level : ", level_resource.resource_path)
 	
 	current_level_id = level_resource.resource_path# you can replace to anything that identify a level
@@ -210,7 +236,7 @@ func end_level():
 	await get_tree().create_timer(0.5).timeout
 
 	var shaman_anim_duration = 0.3
-	animate_runes(shamans.size() * shaman_anim_duration)
+	#animate_runes(shamans.size() * shaman_anim_duration)
 	for shaman in shamans:
 		if shaman.is_valid:
 			shaman.assigned_mask.play_is_valid_audio()
@@ -229,16 +255,10 @@ func end_level():
 	level_complete_audio.play()
 	
 	await get_tree().create_timer(1.5).timeout
-	get_tree().create_tween().tween_property(fire_particles.process_material, "scale_max", 50.0, 0.5)
-	get_tree().create_tween().tween_property(fire_particles.process_material, "emission_sphere_radius", 10.0, 0.5)
 	
-	
-	await get_tree().create_timer(1.5).timeout
-	get_tree().create_tween().tween_property(fire_particles.process_material, "scale_max", 4.0, 0.5)
-	get_tree().create_tween().tween_property(fire_particles.process_material, "emission_sphere_radius", 1.0, 0.5)
 	camera_3d.current_camera_target = camera_3d.camera_target
 	get_tree().create_tween().tween_property(camera_3d, "zoom", 0.0, 0.5)
-
+	
 	rune_label.text = ""
 	
 	next_level()
