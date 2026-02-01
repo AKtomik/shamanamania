@@ -37,3 +37,6 @@ func get_history_object(levelId : String) -> levelMaskResourceHistory:
 	
 func get_history_parsed(levelId : String) -> String:
 	return get_masks_rune(get_history_object(levelId).array)
+
+func get_history_keys() -> Array[String]:
+	return _level_history_dictionnary.keys()
