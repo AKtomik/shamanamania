@@ -15,14 +15,20 @@
   position: absolute;
   transform: scaleX(-1);
   z-index: 0;
-  top: -10%;
+  top: -100%;
   left: -60%;
   width: 58%;
-  height: 214%;
-  background: url("https://github.com/aznoqmous/ggj-2026/blob/master/itch/side-folliage.png?raw=true") repeat-y;
+  height: 314%;
+  background: url("https://github.com/AKtomik/shamanamania/blob/master/itch/side-folliage.png?raw=true") repeat-y;
   background-size: contain;
   pointer-events: none;
-  animation: leftFolliageFlow 3s ease-in-out infinite;
+  animation: leftFolliageFlow 30s linear infinite;
+}
+.screenshot_list {
+width: 300px;
+}
+.screenshot_list img {
+width: 100%;
 }
 
 .view_game_page::after {
@@ -30,27 +36,27 @@
   position: absolute;
   transform: scaleX(1);
   z-index: 0;
-  top: -10%;
+  top: -100%;
   right: -60%;
   width: 58%;
-  height: 214%;
+  height: 314%;
   background: url("https://github.com/aznoqmous/ggj-2026/blob/master/itch/side-folliage.png?raw=true") repeat-y;
   background-size: contain;
   pointer-events: none;
-  animation: rightFolliageFlow 3s ease-in-out infinite;
+  animation: rightFolliageFlow 30s linear infinite;
 }
 
 @keyframes leftFolliageFlow {
   0% {
     background-position-y: 0%;
   }
-  25% {
+  30% {
     background-position-y: 6%;
   }
-  50% {
+  55% {
     background-position-y: 10%;
   }
-  75% {
+  80% {
     background-position-y: 8%;
   }
   100% {
